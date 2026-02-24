@@ -1,0 +1,220 @@
+/* 1. Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. Body Setup */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Isse Navbar top aur Footer bottom par rahega */
+  background: url('../images/logo.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+}
+
+/* 3. Layout Wrapper (Beech ka content) */
+.main-login-content {
+  flex: 1; /* Ye navbar aur footer ke beech ka saara space cover karega */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 10%;
+  gap: 40px;
+}
+
+/* 4. Left Section (Text) */
+.left-section {
+  width: 50%;
+}
+
+.left-section h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #064e3b;
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+/* 5. Login Box Container */
+.login-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.96);
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #16a34a;
+  font-size: 30px;
+}
+
+/* 6. Social Buttons Styling */
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.social-login a {
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 15px;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.google-btn { background-color: #df4b3b; }
+.facebook-btn { background-color: #3b5998; }
+
+.social-login a:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* 7. Divider (OR) */
+.divider {
+  text-align: center;
+  margin: 25px 0;
+  position: relative;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 0; width: 100%; height: 1px; background: #ddd;
+}
+
+.divider span {
+  background: white;
+  padding: 0 15px;
+  position: relative;
+  color: #888;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* 8. Input Groups */
+.input-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 14px;
+  margin-bottom: 7px;
+  color: #14532d;
+  font-weight: 600;
+}
+
+.input-group input {
+  padding: 12px 15px;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+/* 9. Options (Remember & Forgot) */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #444;
+}
+
+.forgot-password {
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* 10. LOGIN BUTTON */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(to right, #16a34a, #22c55e);
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 15px rgba(22, 163, 74, 0.3);
+}
+
+.login-btn:hover {
+  background: linear-gradient(to right, #15803d, #16a34a);
+  transform: translateY(-2px);
+}
+
+/* 11. Signup Link */
+.signup-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #555;
+}
+
+.signup-link a {
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.signup-link a:hover { text-decoration: underline; }
+
+/* 12. Navbar & Footer Full Width */
+#navbar, #footer {
+  width: 100%;
+}
+
+/* 13. Responsive Fix */
+@media (max-width: 992px) {
+  .main-login-content {
+    flex-direction: column;
+    padding: 100px 20px 60px 20px;
+    text-align: center;
+  }
+  .left-section, .login-container {
+    width: 100%;
+  }
+  .left-section h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+}

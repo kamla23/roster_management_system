@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roster System - Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="sidebar-title">DASHBOARD</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="users.html"><i class="fa fa-users"></i> Manage Users</a></li>
+                <li><a href="duties.html"><i class="fa fa-tasks"></i> Manage Duties</a></li>
+                <li><a href="request.html"><i class="fa fa-exchange-alt"></i> Requests</a></li>
+                <li><a href="overview.html"><i class="fa fa-chart-line"></i> Monthly Overview</a></li>
+                <hr class="sidebar-divider">
+                <li class="logout"><a href="login.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-nav-info">
+                <div class="admin-profile">
+                    <span>Welcome, <strong>Admin</strong></span>
+                    <i class="fa fa-user-circle fa-2xl"></i>
+                </div>
+            </header>
+
+            <section class="search-section">
+                <div class="search-wrapper">
+                    <i class="fa fa-search"></i>
+                    <input type="text" id="dashboardSearch" placeholder="Search users, duties or dates...">
+                    <button type="button" class="search-btn">Search</button>
+                </div>
+            </section>
+
+            <section class="cards-container">
+                <div class="stat-card">
+                    <div class="card-content">
+                        <p>Total Users</p>
+                        <h3 id="total-users-count">0</h3> 
+                    </div>
+                    <div class="card-icon"><i class="fa fa-users"></i></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="card-content">
+                        <p>Total Duties</p>
+                        <h3 id="total-duties-count">0</h3>
+                    </div>
+                    <div class="card-icon"><i class="fa fa-calendar-check"></i></div>
+                </div>
+
+                <div class="stat-card warning">
+                    <div class="card-content">
+                        <p>Pending Requests</p>
+                        <h3 id="pending-requests-count">0</h3>
+                    </div>
+                    <div class="card-icon"><i class="fa fa-hourglass-half"></i></div>
+                </div>
+
+                <div class="stat-card success">
+                    <div class="card-content">
+                        <p>Completed Duties</p>
+                        <h3 id="completed-duties-count">0</h3>
+                    </div>
+                    <div class="card-icon"><i class="fa fa-check-double"></i></div>
+                </div>
+            </section>
+
+            <div id="overview-content"></div>
+            <div id="footer"></div>
+        </main>
+    </div>
+    <script src="../Javascript/layout.js"></script>
+    <!-- <script src="../Javascript/dashboard.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* .navbar {
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;
+  padding: 15px 40px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.nav-icons {
+  display: flex;
+  gap: 15px;   
+  align-items: center;
+}
+
+
+.nav-icons a {
+  font-size: 18px;
+  color: #166534;
+  background: #e7f9ef;
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.nav-icons a:hover {
+  background: #16a34a;
+  color: white;
+}
+
+.nav-title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #16a34a;
+} */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Logo Title */
+.nav-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #16a34a;
+  letter-spacing: 1px;
+}
+
+/* Right Section */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Home Link */
+.home-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #14532d;
+  transition: 0.3s ease;
+}
+
+.home-link:hover {
+  color: #16a34a;
+}
+
+/* Icons Section */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Icons */
+.nav-icons a {
+  font-size: 20px;
+  color: #14532d;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-icons a:hover {
+  color: #16a34a;
+  transform: translateY(-2px);
+}

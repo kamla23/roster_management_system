@@ -1,0 +1,132 @@
+
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  width:100wh;
+  background: url("../images/green1.jpg") no-repeat center center/cover;
+   /* background: linear-gradient(135deg, #065f46, #16a34a, #4ade80); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  gap: 25px;              
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.hero-content p {
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.get-started {
+  padding: 14px 30px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.get-started:hover {
+  background: #25ebbd;
+  color: white;
+  transform: translateY(-3px);
+}
+
+
+
+/* ===== Footer ===== */
+.footer {
+  background: #11271d;
+  color: #ffffff;
+  padding: 50px 80px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer h3, .footer h4 {
+  margin-bottom: 15px;
+}
+
+.footer p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-links ul {
+  list-style: none;/* 
+.Signup-btn i {
+    font-size: 18px;
+} */
+}
+
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-links ul li a {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #25eba6;
+}
+
+.social-icons i {
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icons i:hover {
+  color: #25ebc0;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #374151;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+}

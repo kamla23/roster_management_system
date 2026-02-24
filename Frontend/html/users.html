@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Users - Roster System</title>
+    <link rel="stylesheet" href="../css/users.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <div class="app-container">
+        <div id="dashboard"></div>
+
+        <main class="main-content">
+            <div id="dashboard-top-info"></div>
+
+            <div class="page-header">
+                <div class="title-section">
+                    <h2>Manage Users</h2>
+                    <p style="color: #64748b; font-size: 14px">
+                        Total Users: <span id="userCount">0</span>
+                    </p>
+                </div>
+                <button class="add-btn" onclick="toggleModal('userModal')">
+                    <i class="fa fa-plus"></i> Add New User
+                </button>
+            </div>
+            
+            <section class="filter-section">
+                <div class="search-box">
+                    <i class="fa fa-search"></i>
+                    <input type="text" id="userSearch" placeholder="Search by name or email..." onkeyup="filterUsers()" />
+                </div>
+                <div class="filters">
+                    <select id="roleFilter" onchange="filterUsers()">
+                        <option value="">All Roles</option>
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
+                    <select id="statusFilter" onchange="filterUsers()">
+                        <option value="">All Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="table-card">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody"></tbody>
+                </table>
+            </section>
+
+            <div id="footer"></div>
+        </main>
+    </div>
+
+    <div id="userModal" class="modal"></div>
+
+    <script src="../Javascript/layout.js"></script>
+    <script src="../Javascript/dashboard.js"></script>
+    <script src="../Javascript/users.js"></script>
+</body>
+</html>
