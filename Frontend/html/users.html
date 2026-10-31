@@ -1,76 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manage Users - Roster System</title>
+    <title>Manage Users</title>
     <link rel="stylesheet" href="../css/users.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
-    <div id="navbar"></div>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Manage Users</h2>
+        <button class="add-btn" onclick="openModal()">+ Add User</button>
+      </div>
 
-    <div class="app-container">
-        <div id="dashboard"></div>
+      <div class="card">
+        <input type="text" id="search" placeholder="Search by name/email" />
 
-        <main class="main-content">
-            <div id="dashboard-top-info"></div>
+        <select id="filterRole">
+          <option value="">All Roles</option>
+          <option value="Admin">Admin</option>
+          <option value="Employee">Employee</option>
+        </select>
 
-            <div class="page-header">
-                <div class="title-section">
-                    <h2>Manage Users</h2>
-                    <p style="color: #64748b; font-size: 14px">
-                        Total Users: <span id="userCount">0</span>
-                    </p>
-                </div>
-                <button class="add-btn" onclick="toggleModal('userModal')">
-                    <i class="fa fa-plus"></i> Add New User
-                </button>
-            </div>
-            
-            <section class="filter-section">
-                <div class="search-box">
-                    <i class="fa fa-search"></i>
-                    <input type="text" id="userSearch" placeholder="Search by name or email..." onkeyup="filterUsers()" />
-                </div>
-                <div class="filters">
-                    <select id="roleFilter" onchange="filterUsers()">
-                        <option value="">All Roles</option>
-                        <option value="Admin">Admin</option>
-                        <option value="User">User</option>
-                    </select>
-                    <select id="statusFilter" onchange="filterUsers()">
-                        <option value="">All Status</option>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
-                </div>
-            </section>
+        <select id="filterStatus">
+          <option value="">All Status</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
 
-            <section class="table-card">
-                <table class="user-table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="userTableBody"></tbody>
-                </table>
-            </section>
-
-            <div id="footer"></div>
-        </main>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="userTable"></tbody>
+        </table>
+      </div>
     </div>
 
-    <div id="userModal" class="modal"></div>
+  
+    <div class="modal" id="userModal">
+      <div class="modal-content">
+        <h3 id="modalTitle">Add User</h3>
 
-    <script src="../Javascript/layout.js"></script>
-    <script src="../Javascript/dashboard.js"></script>
+        <input type="hidden" id="editIndex" />
+
+        <input type="text" id="name" placeholder="Name" /><br /><br />
+        <input type="email" id="email" placeholder="Email" /><br /><br />
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+        /><br /><br />
+
+        <select id="role">
+          <option value="Admin">Admin</option>
+          <option value="Employee">Employee</option></select
+        ><br /><br />
+
+        <select id="status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option></select
+        ><br /><br />
+
+        <button onclick="saveUser()">Save</button>
+        <button onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+
     <script src="../Javascript/users.js"></script>
-</body>
+  </body>
 </html>

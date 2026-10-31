@@ -1,4 +1,5 @@
-/* 1. Global Reset */
+/* ================= GLOBAL ================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,26 +7,25 @@
   font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* 2. Body Styling */
 body {
   min-height: 100vh;
   display: flex;
-  flex-direction: column; /* Isse Navbar upar aur Footer niche fix rahega */
+  flex-direction: column;
   background: url('../images/logo.jpg') no-repeat center center/cover;
   background-attachment: fixed;
 }
 
-/* 3. Main Content Wrapper (Form aur Text ke liye) */
+/* ================= MAIN LAYOUT ================= */
+
 .main-content {
-  flex: 1; /* Ye navbar aur footer ke beech ka poora space lega */
+  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 10%; /* Side spacing */
+  padding: 40px 10%;
   gap: 20px;
 }
 
-/* 4. Left Section (Heading) */
 .left-section {
   width: 45%;
 }
@@ -33,14 +33,15 @@ body {
 .left-section h1 {
   font-size: 45px;
   font-weight: bold;
-  color: #064e3b; /* Dark Green */
+  color: #0e0f0f;
   line-height: 1.2;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-/* 5. Signup Container */
+/* ================= SIGNUP BOX ================= */
+
 .signup-container {
-  width: 400px; /* Fixed width for a clean look */
+  width: 400px;
 }
 
 .signup-box {
@@ -57,8 +58,10 @@ body {
   font-size: 28px;
 }
 
-/* 6. Form Inputs */
+/* ================= INPUT GROUP ================= */
+
 .input-group {
+  position: relative; /* important for eye icon */
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
@@ -67,13 +70,13 @@ body {
 .input-group label {
   font-size: 14px;
   margin-bottom: 6px;
-  color: #14532d;
+  color: #1a1b1a;
   font-weight: 600;
 }
 
 .input-group input,
 .input-group select {
-  padding: 12px;
+  padding: 12px 40px 12px 12px; /* space for icon */
   border: 1px solid #bbf7d0;
   border-radius: 8px;
   font-size: 14px;
@@ -87,7 +90,24 @@ body {
   box-shadow: 0 0 8px rgba(22, 163, 74, 0.2);
 }
 
-/* 7. SIGNUP BUTTON (Fixed styling) */
+/* ================= PASSWORD ICON ================= */
+
+.togglePassword {
+  position: absolute;
+  right: 12px;
+  top: 72%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: gray;
+  font-size: 14px;
+}
+
+.togglePassword:hover {
+  color: black;
+}
+
+/* ================= BUTTON ================= */
+
 .signup-btn {
   width: 100%;
   padding: 14px;
@@ -112,7 +132,8 @@ body {
   transform: translateY(0);
 }
 
-/* 8. Links Styling */
+/* ================= LOGIN LINK ================= */
+
 .login-link {
   text-align: center;
   margin-top: 20px;
@@ -130,7 +151,17 @@ body {
   text-decoration: underline;
 }
 
-/* 9. Responsive Design */
+/* ================= ERROR LIST ================= */
+
+#errors {
+  color: red;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
 @media (max-width: 992px) {
   .main-content {
     flex-direction: column;
@@ -138,7 +169,8 @@ body {
     text-align: center;
   }
 
-  .left-section, .signup-container {
+  .left-section,
+  .signup-container {
     width: 100%;
   }
 
@@ -148,6 +180,14 @@ body {
   }
 }
 
-/* Navbar aur Footer spacing ensure karne ke liye */
-#navbar { width: 100%; }
-#footer { width: 100%; background: #0b1d12; color: white; }
+/* ================= NAVBAR & FOOTER ================= */
+
+#navbar {
+  width: 100%;
+}
+
+#footer {
+  width: 100%;
+  background: #0b1d12;
+  color: white;
+}

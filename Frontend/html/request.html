@@ -3,165 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skip / Swap Requests - Roster System</title>
-    <link rel="stylesheet" href="../css/request.css"> 
+    <title>Requests - SmartRoster</title>
+    <link rel="stylesheet" href="../css/request.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div id="navbar"></div>
 
-    <div class="layout">
-        <div id="sidebar-container"></div>
+    <div class="app-container">
+        <div class="view-toggle">
+            <button onclick="switchView('user')">User View</button>
+            <button onclick="switchView('admin')">Admin View</button>
+        </div>
 
-        <main class="main">
-            <div id="user-view">
-                <div class="top-header">
-                    <h3>Request Skip / Swap</h3>
-                </div>
-
-                <div class="table-card" style="padding: 25px; margin-bottom: 30px;">
-                    <form id="requestForm">
-                        <div class="filter-section" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: none; box-shadow: none;">
-                            <div class="form-group">
-                                <label style="display:block; margin-bottom:8px; font-weight:600;">Select Duty</label>
-                                <select id="dutySelect" required style="width: 100%;">
-                                    <option value="">-- Upcoming Duties --</option>
-                                    <option>Cleaning (26-02-2026)</option>
-                                    <option>Cooking (28-02-2026)</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label style="display:block; margin-bottom:8px; font-weight:600;">Request Type</label>
-                                <div style="display: flex; gap: 20px; padding: 10px;">
-                                    <label><input type="radio" name="type" value="Skip" checked onclick="toggleSwapUser(false)"> Skip</label>
-                                    <label><input type="radio" name="type" value="Swap" onclick="toggleSwapUser(true)"> Swap</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="swap-user-group" class="form-group" style="display: none; margin-top: 15px;">
-                            <label style="display:block; margin-bottom:8px; font-weight:600;">Swap With User</label>
-                            <select id="swapUser" style="width: 100%; padding: 10px; border-radius: 8px;">
-                                <option value="">-- Select User --</option>
-                                <option>Kittu</option>
-                                <option>Rahul</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group" style="margin-top: 15px;">
-                            <label style="display:block; margin-bottom:8px; font-weight:600;">Reason</label>
-                            <textarea id="reason" rows="3" placeholder="Explain why you need this..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd;"></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn" style="margin-top: 20px;">
-                            Submit Request
-                        </button>
-                    </form>
-                </div>
-
-                <h4>My Recent Requests</h4>
-                <div class="table-card">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Duty</th>
-                                <th>Date</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="myRequestsTable">
-                            <tr>
-                                <td>Cleaning</td>
-                                <td>26-02-2026</td>
-                                <td>Skip</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <div id="userSection" class="section">
+            <div class="page-header">
+                <h1>Request Skip / Swap</h1>
             </div>
 
-            <div id="admin-view" style="display: none; margin-top: 20px;">
-                <div class="top-header">
-                    <h3>Manage Requests (Admin)</h3>
-                    <div class="filters">
-                        <select id="adminFilter">
-                            <option>All Status</option>
-                            <option>Pending</option>
-                            <option>Approved</option>
-                            <option>Rejected</option>
-                        </select>
+            <div class="card request-form">
+                <form id="requestForm">
+                    <label>Select Your Duty</label>
+                    <select id="userDuties" required></select>
+
+                    <label>Request Type</label>
+                    <div class="radio-group">
+                        <input type="radio" name="reqType" value="Skip" checked onclick="toggleSwapUser(false)"> Skip
+                        <input type="radio" name="reqType" value="Swap" onclick="toggleSwapUser(true)"> Swap
                     </div>
-                </div>
 
-                <div class="table-card">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>User</th>
-                                <th>Duty</th>
-                                <th>Type</th>
-                                <th>Reason</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="adminRequestsTable">
-                            <tr>
-                                <td>Rahul</td>
-                                <td>Cooking</td>
-                                <td>Swap (with Kittu)</td>
-                                <td>Not feeling well</td>
-                                <td><span class="status pending">Pending</span></td>
-                                <td>
-                                    <button class="approve-btn">Approve</button>
-                                    <button class="reject-btn">Reject</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <div id="swapUserField" style="display:none; margin-top: 15px;">
+                        <label>Select User to Swap With</label>
+                        <select id="allUsersList"></select>
+                    </div>
+
+                    <label>Reason</label>
+                    <textarea id="requestReason" rows="3" placeholder="Why do you want to skip/swap?" required></textarea>
+
+                    <button type="submit" class="submit-btn">Submit Request</button>
+                </form>
             </div>
 
-            <div id="footer"></div>
-        </main>
+            <div class="page-header" style="margin-top: 40px;">
+                <h2>My Requests</h2>
+            </div>
+            <div class="card table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Duty</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myRequestsTable"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="adminSection" class="section" style="display:none;">
+            <div class="page-header">
+                <h1>Manage Requests</h1>
+            </div>
+
+            <div class="card table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Duty</th>
+                            <th>Type</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminRequestsTable"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <script>
-        // Function to load external HTML files
-        function loadComponent(id, filePath) {
-            fetch(filePath)
-                .then(response => {
-                    if (!response.ok) throw new Error(`${filePath} not found`);
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById(id).innerHTML = data;
-                })
-                .catch(err => console.error(err));
-        }
-
-        // Files load karein (Inke naam aur path check kar lein)
-        loadComponent("navbar", "navbar.html");
-        loadComponent("sidebar-container", "dashboard.html"); // Sidebar file ka naam
-        loadComponent("footer", "footer.html");
-
-        // Swap user dropdown toggle logic
-        function toggleSwapUser(show) {
-            document.getElementById('swap-user-group').style.display = show ? 'block' : 'none';
-        }
-
-        // Admin/User View Logic (Test karne ke liye Admin ko User karke dekhein)
-        const userRole = "Admin"; 
-        if(userRole === "Admin") {
-            document.getElementById('admin-view').style.display = 'block';
-            document.getElementById('user-view').style.display = 'none';
-        } else {
-            document.getElementById('admin-view').style.display = 'none';
-            document.getElementById('user-view').style.display = 'block';
-        }
-    </script>
+    <script src="../Javascript/request.js"></script>
 </body>
 </html>

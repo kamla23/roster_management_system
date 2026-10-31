@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <title>Signup - Roster System</title>
     <link rel="stylesheet" href="../css/Signup.css" />
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+/>
   </head>
   <body>
     <div id="navbar"></div>
@@ -48,6 +52,7 @@
                 placeholder="Enter password"
                 required
               />
+                  <!-- <i class="fa-solid fa-eye togglePassword" data-target="password"></i> -->
             </div>
 
             <div class="input-group">
@@ -59,8 +64,8 @@
                 placeholder="Confirm password"
                 required
               />
+                 <!-- <i class="fa-solid fa-eye togglePassword" data-target="confirmPassword"></i> -->
             </div>
-
             <div class="input-group">
               <label for="role">Select Role</label>
               <select id="role" name="role">
@@ -68,7 +73,10 @@
                 <option value="Admin">Admin</option>
               </select>
             </div>
-
+            <ul
+              id="errors"
+              style="color: red; list-style: none; padding: 0"
+            ></ul>
             <button type="submit" class="signup-btn">Sign Up</button>
             <p class="login-link">
               Already have an account? <a href="login.html">Login</a>

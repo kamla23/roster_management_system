@@ -3,105 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monthly Dashboard - Roster System</title>
-    <link rel="stylesheet" href="../css/overview.css"> 
+    <title>Monthly Dashboard - SmartRoster</title>
+    <link rel="stylesheet" href="../css/overview.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div id="navbar"></div>
 
-    <div class="layout">
-        <div id="dashboard"></div>
-
-        <main class="main">
-            <div class="top-header">
-                <div class="title-area">
-                    <h3>Monthly Performance Overview</h3>
-                    <p>Track duty completion and user rankings</p>
-                </div>
-                <div class="month-selector">
-                    <i class="fa fa-calendar-alt"></i>
-                    <select id="monthPicker">
-                        <option value="2026-01">January 2026</option>
-                        <option value="2026-02" selected>February 2026</option>
-                        <option value="2026-03">March 2026</option>
-                    </select>
-                </div>
+    <div class="app-container">
+        <div class="page-header">
+            <h1>Monthly Dashboard</h1>
+            <div class="month-selector">
+                <label>Select Month:</label>
+                <select id="monthPicker" onchange="updateDashboard()">
+                    <option value="2026-01">January 2026</option>
+                    <option value="2026-02" selected>February 2026</option>
+                    <option value="2026-03">March 2026</option>
+                </select>
             </div>
-
-            <section class="summary-cards">
-                <div class="stat-card total">
-                    <div class="stat-content">
-                        <span class="label">Total Duties</span>
-                        <h2 id="totalCount">0</h2>
-                    </div>
-                    <div class="stat-icon"><i class="fa fa-tasks"></i></div>
-                </div>
-                <div class="stat-card completed">
-                    <div class="stat-content">
-                        <span class="label">Completed</span>
-                        <h2 id="completedCount">0</h2>
-                    </div>
-                    <div class="stat-icon"><i class="fa fa-check-circle"></i></div>
-                </div>
-                <div class="stat-card pending">
-                    <div class="stat-content">
-                        <span class="label">Pending</span>
-                        <h2 id="pendingCount">0</h2>
-                    </div>
-                    <div class="stat-icon"><i class="fa fa-hourglass-half"></i></div>
-                </div>
-                <div class="stat-card skipped">
-                    <div class="stat-content">
-                        <span class="label">Skipped</span>
-                        <h2 id="skippedCount">0</h2>
-                    </div>
-                    <div class="stat-icon"><i class="fa fa-times-circle"></i></div>
-                </div>
-            </section>
-
-            <div class="dashboard-grid">
-                <div class="chart-box card-style">
-                    <div class="card-header">
-                        <h4>Duty Distribution</h4>
-                    </div>
-                    <div class="chart-wrapper">
-                        <canvas id="performanceChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="table-box card-style">
-                    <div class="card-header">
-                        <h4>User Performance Ranking</h4>
-                        <button class="export-btn"><i class="fa fa-download"></i> Export</button>
-                    </div>
-                    <div class="table-wrapper">
-                        <table class="report-table">
-                            <thead>
-                                <tr>
-                                    <th>User Name</th>
-                                    <th>Total</th>
-                                    <th>Done</th>
-                                    <th>Wait</th>
-                                    <th>Skip</th>
-                                </tr>
-                            </thead>
-                            <tbody id="performanceBody">
-                                <tr>
-                                    <td colspan="5" class="empty-msg">Select a month to load data...</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card total">
+                <h3>Total Duties</h3>
+                <p id="totalDuties">0</p>
             </div>
+            <div class="stat-card completed">
+                <h3>Completed</h3>
+                <p id="completedDuties">0</p>
+            </div>
+            <div class="stat-card pending">
+                <h3>Pending</h3>
+                <p id="pendingDuties">0</p>
+            </div>
+            <div class="stat-card skipped">
+                <h3>Skipped</h3>
+                <p id="skippedDuties">0</p>
+            </div>
+        </div>
 
-            <div id="footer"></div>
-        </main>
+        <div class="chart-container card">
+            <h3>Performance Distribution</h3>
+            <canvas id="performanceChart"></canvas>
+        </div>
+
+        <div class="card table-card">
+            <h3 id="tableTitle">User-wise Performance</h3>
+            <table>
+                <thead>
+                    <tr id="tableHeader">
+                        </tr>
+                </thead>
+                <tbody id="overviewTableBody"></tbody>
+            </table>
+        </div>
     </div>
-    <script src="../Javascript/dashboard.js"></script>
+
     <script src="../Javascript/overview.js"></script>
-    <script src="../Javascript/layout.js"></script>
 </body>
 </html>

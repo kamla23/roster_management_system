@@ -1,48 +1,61 @@
 .footer {
-  background: #f0fdf4;   /* softer mint */
+  background-color: #dcfce7;
   color: #14532d;
-  padding: 18px 40px;
-  font-size: 14px;
-  border-top: 3px solid #16a34a;
+  padding: 40px;
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
+  gap: 30px;
 }
 
-.footer-about h3 {
-  font-size: 16px;
-  margin-bottom: 5px;
-  color: #15803d;
+.footer h3,
+.footer h4 {
+  margin-bottom: 10px;
+  color: #16a34a;
 }
 
-.footer-about p {
-  font-size: 13px;
-  color: #166534;
-}
-
-.footer-links {
+.footer-links,
+.footer-social {
   display: flex;
-  gap: 18px;
+  flex-direction: column;
 }
 
 .footer-links a {
   color: #14532d;
   text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s ease;
+  margin-bottom: 6px;
+  transition: 0.3s;
 }
 
 .footer-links a:hover {
   color: #16a34a;
+  padding-left: 5px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.social-icons a {
+  font-size: 18px;
+  color: #14532d;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #16a34a;
+  transform: scale(1.2);
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 12px;
-  font-size: 12px;
-  color: #15803d;
+  margin-top: 20px;
+  font-size: 13px;
+  border-top: 1px solid #bbf7d0;
+  padding-top: 10px;
 }

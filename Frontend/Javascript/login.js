@@ -1,19 +1,43 @@
+const loginForm = document.getElementById("loginForm");
+const loginErrors = document.getElementById("loginErrors");
 
-let form = document.querySelector('form');
+loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-form.onsubmit = function(event) {
-  event.preventDefault(); 
-  let email = document.querySelector('input[type="email"]').value.trim();
-  let password = document.querySelector('input[type="password"]').value;
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
 
-
-  if(email === "" || password === "") {
+  if (!email || !password) {
     alert("Please fill all fields!");
     return;
   }
 
+  const data = { email, password };
 
-  alert("Login Successful!\nEmail: " + email);
+  try {
+  const res = await fetch("http://localhost:50000/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
 
-  form.reset(); 
-};
+  const result = await res.json();
+  loginErrors.innerHTML = "";
+
+
+  if (!res.ok) {
+    const li = document.createElement("li");
+    li.textContent = result.message || "Login failed";
+    loginErrors.appendChild(li);
+    return;
+  }
+
+  alert("Login successful!");
+  localStorage.setItem("token", result.token);
+  window.location.href = "dashboard.html";
+
+} catch (err) {
+  console.error("Error connecting to backend:", err);
+  alert("Server error. Try again later.");
+}
+});

@@ -1,31 +1,25 @@
-/* 1. Global Reset */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
-
-/* 2. Body Setup */
 body {
   min-height: 100vh;
   display: flex;
-  flex-direction: column; /* Isse Navbar top aur Footer bottom par rahega */
+  flex-direction: column; 
   background: url('../images/logo.jpg') no-repeat center center/cover;
   background-attachment: fixed;
 }
-
-/* 3. Layout Wrapper (Beech ka content) */
 .main-login-content {
-  flex: 1; /* Ye navbar aur footer ke beech ka saara space cover karega */
+  flex: 1; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 50px 10%;
   gap: 40px;
 }
-
-/* 4. Left Section (Text) */
 .left-section {
   width: 50%;
 }
@@ -38,7 +32,6 @@ body {
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
 }
 
-/* 5. Login Box Container */
 .login-container {
   width: 100%;
   max-width: 420px;
@@ -57,31 +50,30 @@ body {
   color: #16a34a;
   font-size: 30px;
 }
-
-/* 6. Social Buttons Styling */
 .social-login {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
   margin-bottom: 20px;
 }
 
 .social-login a {
+  flex: 1;          
   text-decoration: none;
   padding: 12px;
   border-radius: 8px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+  align-items: center;     
+  justify-content: center; 
+  gap: 10px;
   font-size: 15px;
   color: white;
   font-weight: 500;
   transition: 0.3s ease;
 }
 
-.google-btn { background-color: #df4b3b; }
-.facebook-btn { background-color: #3b5998; }
+.google-btn { background-color: #4cad78; }
+.facebook-btn { background-color: #3b9869; }
 
 .social-login a:hover {
   opacity: 0.9;
@@ -89,7 +81,6 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* 7. Divider (OR) */
 .divider {
   text-align: center;
   margin: 25px 0;
@@ -111,7 +102,6 @@ body {
   font-weight: bold;
 }
 
-/* 8. Input Groups */
 .input-group {
   margin-bottom: 18px;
   display: flex;
@@ -139,7 +129,6 @@ body {
   box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
 }
 
-/* 9. Options (Remember & Forgot) */
 .options {
   display: flex;
   justify-content: space-between;
@@ -161,8 +150,6 @@ body {
   text-decoration: none;
   font-weight: 600;
 }
-
-/* 10. LOGIN BUTTON */
 .login-btn {
   width: 100%;
   padding: 14px;
@@ -181,8 +168,6 @@ body {
   background: linear-gradient(to right, #15803d, #16a34a);
   transform: translateY(-2px);
 }
-
-/* 11. Signup Link */
 .signup-link {
   text-align: center;
   margin-top: 25px;
@@ -198,12 +183,10 @@ body {
 
 .signup-link a:hover { text-decoration: underline; }
 
-/* 12. Navbar & Footer Full Width */
 #navbar, #footer {
   width: 100%;
 }
 
-/* 13. Responsive Fix */
 @media (max-width: 992px) {
   .main-login-content {
     flex-direction: column;

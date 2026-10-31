@@ -1,11 +1,9 @@
 
-
-/* Hero Section */
 .hero {
   height: 100vh;
-  width:100wh;
-  background: url("../images/green1.jpg") no-repeat center center/cover;
-   /* background: linear-gradient(135deg, #065f46, #16a34a, #4ade80); */
+  width:100vw;
+  background: url("../images/nav1.jpeg") no-repeat center center/cover;
+   /* background: linear-gradient(180deg, #5ab198, #9fddb6, #09e058); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,8 +57,6 @@
 }
 
 
-
-/* ===== Footer ===== */
 .footer {
   background: #11271d;
   color: #ffffff;
@@ -84,10 +80,8 @@
 }
 
 .footer-links ul {
-  list-style: none;/* 
-.Signup-btn i {
-    font-size: 18px;
-} */
+  list-style: none;
+
 }
 
 .footer-links ul li {
@@ -124,7 +118,6 @@
   color: #9ca3af;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;

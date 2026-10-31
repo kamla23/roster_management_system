@@ -1,98 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Manage Duties</title>
-  <link rel="stylesheet" href="../css/duties.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Duties - SmartRoster</title>
+    <link rel="stylesheet" href="../css/duties.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
-  <div id="navbar"></div>
 
-  <div class="layout">
-    <div id="sidebar-container"></div>
+    <div class="standalone-container">
+        <div class="page-header">
+            <div class="title-area">
+                <h1>Manage Duties</h1>
+                <p>Assign and track daily tasks</p>
+            </div>
+            <div class="action-buttons">
+                <button class="auto-btn" onclick="autoAssignDuties()"><i class="fa fa-magic"></i> Auto Assign</button>
+                <button class="add-btn" onclick="openDutyModal()"><i class="fa fa-plus"></i> Add Duty</button>
+            </div>
+        </div>
 
-    <main class="main">
-      <div class="top-header">
-        <h3>Manage Duties</h3>
-        <button class="add-btn">
-          <i class="fa fa-plus"></i> Add Duty
-        </button>
-      </div>
+        <div class="card filter-card">
+            <div class="search-box">
+                <i class="fa fa-search"></i>
+                <input type="text" id="searchDuty" placeholder="Search by duty name..." onkeyup="renderDuties()">
+            </div>
+            <div class="filter-group">
+                <input type="date" id="filterDate" onchange="renderDuties()">
+                <select id="filterUser" onchange="renderDuties()">
+                    <option value="">All Users</option>
+                    </select>
+                <select id="filterStatus" onchange="renderDuties()">
+                    <option value="">All Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Skipped">Skipped</option>
+                </select>
+            </div>
+        </div>
 
-      <div class="filter-section">
-        <input type="text" placeholder="Search duty..." class="search">
-        <input type="date">
-        <select id="user-dropdown">
-          <option>All Users</option>
-          <option>Rahul</option>
-          <option>Kittu</option>
-        </select>
-        <select>
-          <option>All Status</option>
-          <option>Pending</option>
-          <option>Completed</option>
-          <option>Skipped</option>
-        </select>
-        <button class="auto-btn">
-          <i class="fa fa-rotate"></i> Auto Assign
-        </button>
-      </div>
+        <div class="card table-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Duty Name</th>
+                        <th>Assigned User</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="dutyTableBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
 
-      <div class="table-card">
-        <table>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Duty Name</th>
-              <th>Assigned User</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Cleaning</td>
-              <td>Rahul</td>
-              <td>25-02-2026</td>
-              <td><span class="status pending">Pending</span></td>
-              <td>
-                <button class="edit-btn"><i class="fa fa-pen" title="Edit"></i></button>
-                <button class="delete-btn"><i class="fa fa-trash" title="Delete"></i></button>
-                <button class="reassign-btn"><i class="fa fa-exchange" title="Reassign"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div id="footer"></div>
-    </main>
-  </div>
-
-<script>
-  // Saare components ko ek saath load karne ka function
-  function loadComponent(id, filePath) {
-    fetch(filePath)
-      .then(response => {
-        if (!response.ok) throw new Error(`${filePath} not found`);
-        return response.text();
-      })
-      .then(data => {
-        document.getElementById(id).innerHTML = data;
-      })
-      .catch(err => console.error(err));
-  }
-
-  // Files load karein (Check karein ki ye files aapke folder mein hain)
-  loadComponent("navbar", "navbar.html");
-  loadComponent("sidebar-container", "dashboard.html"); // Aapne sidebar ke liye dashboard.html likha tha
-  loadComponent("footer", "footer.html");
-</script>
-
-<script src="layout.js"></script>
-
+    <div id="dutyModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Add New Duty</h3>
+            <hr>
+            <input type="hidden" id="editIndex">
+            
+            <label>Duty Name</label>
+            <input type="text" id="dutyName" placeholder="e.g. Cooking">
+            
+            <label>Assign User</label>
+            <select id="assignUser"></select>
+            
+            <label>Date</label>
+            <input type="date" id="dutyDate">
+            
+            <label>Status</label>
+            <select id="dutyStatus">
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+                <option value="Skipped">Skipped</option>
+            </select>
+            
+            <div class="modal-footer">
+                <button class="save-btn" onclick="saveDuty()">Save Duty</button>
+                <button class="cancel-btn" onclick="closeDutyModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="../Javascript/duties.js"></script>
 </body>
 </html>
